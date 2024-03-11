@@ -1,0 +1,28 @@
+﻿CREATE TABLE Users
+(
+    UserID   INT AUTO_INCREMENT PRIMARY KEY,
+    Username VARCHAR(50)  NOT NULL,
+    Email    VARCHAR(100) NOT NULL,
+    Password VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE Posts
+(
+    PostID       INT AUTO_INCREMENT PRIMARY KEY,
+    Title        VARCHAR(255) NOT NULL,
+    Content      TEXT         NOT NULL,
+    CreationDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    UserID       INT,
+    FOREIGN KEY (UserID) REFERENCES Users (UserID)
+);
+
+CREATE TABLE Comments
+(
+    CommentID    INT AUTO_INCREMENT PRIMARY KEY,
+    Content      TEXT NOT NULL,
+    CreationDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    PostID       INT,
+    UserID       INT,
+    FOREIGN KEY (PostID) REFERENCES Posts (PostID),
+    FOREIGN KEY (UserID) REFERENCES Users (UserID)
+);

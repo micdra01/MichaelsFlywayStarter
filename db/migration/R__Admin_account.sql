@@ -1,0 +1,1 @@
+﻿INSERT IGNORE INTO Users (UserID, Username, Email, Password) VALUES ('1', 'Admin', 'user@example.com', 'Password');
